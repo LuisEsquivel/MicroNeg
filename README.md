@@ -1,2 +1,2 @@
 # MicroNeg
-KAAAAAROOOOOTO
+Gokuuuuuu

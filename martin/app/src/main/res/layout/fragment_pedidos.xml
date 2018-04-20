@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fm_pedidos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ed03181d"
+    tools:context=".Pedidos">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ScrollView>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="70dp"
+            android:paddingTop="10dp"
+            android:text="Listado de pedidos"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/id_RecyclerViewPedidos"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:background="@android:color/background_light"
+            android:divider="@color/colorPALETIN"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            tools:ignore="MissingConstraints">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <EditText
+            android:id="@+id/idProductazo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="103dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="31dp"
+            android:ems="10"
+            android:hint="ID DEL PEDIDO"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginEnd="115dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="94dp"
+            android:text="ID DEL PEDIDO"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_RecyclerViewPedidos" />
+
+        <Button
+            android:id="@+id/eliminarProductazo"
+            android:layout_width="300dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="68dp"
+            android:background="@drawable/boton_chido"
+            android:text="eliminar pedido"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idProductazo" />
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

@@ -3,7 +3,7 @@
     android:id="@+id/fm_ver_productos"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="#ed03181d"
     tools:context="com.example.luisesquivel.martin.AgregarProducto">
 
 

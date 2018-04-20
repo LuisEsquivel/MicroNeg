@@ -18,46 +18,25 @@
         <item
             android:id="@+id/actualizarproductos"
             android:icon="@drawable/productos"
-            android:title="Actualizar Producto" />
+            android:title="Actualizar y/o eliminar Producto" />
 
-        <item
-            android:id="@+id/eliminarproductos"
-            android:icon="@drawable/productos"
-            android:title="Eliminar Producto" />
 
 
         <item
-            android:id="@+id/corte_mensual"
-            android:icon="@drawable/cortemensual"
-            android:title="Ventas Mensuales" />
-        <item
-            android:id="@+id/corte_al_dia"
-            android:icon="@drawable/cortealdia"
-            android:title="Ventas del Día" />
-
-
-        <item
-            android:id="@+id/pedidos"
+            android:id="@+id/pedidosdueño"
             android:icon="@drawable/pedidos"
             android:title="Pedidos" />
 
 
-        <item
-            android:id="@+id/clientes"
-            android:icon="@drawable/clientes"
-            android:title="Clientes" />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
+                android:id="@+id/cerrarSesion"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Cerrar Sesión" />
+
         </menu>
     </item>
 

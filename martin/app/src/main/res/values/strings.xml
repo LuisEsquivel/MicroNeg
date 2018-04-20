@@ -8,4 +8,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_clientazo">Clientazo</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Menú</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="direccion">Dirección: Avenida No Reelección\nCruz con Avenida Aztlán\n#7 Monterrey Nueva York</string>
 </resources>

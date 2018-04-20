@@ -15,7 +15,7 @@ $nombre = $_POST["nombre"];
 $precio = $_POST["precio"];
 $descripcion = $_POST["descripcion"];
 $imagen = $_POST["imagen"];
-
+ 
 $rutaImagen = "imagenes/$nombre.jpg";
 
 $url = "http://$server//martin/$rutaImagen";

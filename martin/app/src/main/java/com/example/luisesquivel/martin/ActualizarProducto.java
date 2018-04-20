@@ -63,11 +63,12 @@ public class ActualizarProducto extends Fragment {
     private String path;
     File fileImagen;
     Bitmap bitmap;
+    Ip ip = new Ip();
 
     //variables y el string request para enviar los parámetros por método POST
     JsonObjectRequest jsonObjectRequest;
     StringRequest stringRequest;
-    RequestQueue queue;
+    RequestQueue requestQueue;
     ProgressDialog progreso;
     ImageView image;
     ImageButton btnConsultar;//SE MODIFICA
@@ -83,13 +84,13 @@ public class ActualizarProducto extends Fragment {
         ID=(EditText) vista.findViewById(R.id.ID_Productos);
         nombre = (EditText) vista.findViewById(R.id.nombre_producto);
         precio = (EditText) vista.findViewById(R.id.precio_producto);
-        descripcion = (EditText)vista.findViewById(R.id.descripcion_prod);
+        descripcion = (EditText)vista.findViewById(R.id.direction);
         eliminar= (Button) vista.findViewById(R.id.Eliminar);
         examinar = (Button) vista.findViewById(R.id.examinar);
         actualizar=(Button) vista.findViewById(R.id.Actualizar);
         btnConsultar= (ImageButton) vista.findViewById(R.id.btnConsultarProductos);
 
-        queue = Volley.newRequestQueue(getContext());
+        requestQueue = Volley.newRequestQueue(getContext());
 
         //Al momento de dar clic al boton actualizar ,se actualizara el producto seleccionado
         actualizar.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +134,9 @@ public class ActualizarProducto extends Fragment {
                 mostrarDialogOpciones();
             }
         });
+
+        requestQueue = Volley.newRequestQueue(getContext());
+
 
         return vista;
     }
@@ -198,16 +202,15 @@ public class ActualizarProducto extends Fragment {
                 Log.i("ERROR IMAGEN","Response -> "+error);
             }
         });
-        //  request.add(imageRequest);
-        VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(imageRequest);
+          requestQueue.add(imageRequest);
+        //VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(imageRequest);
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
-            case COD_SELECCIONA:
-                Uri miPath = data.getData();
+            case COD_SELECCIONA: Uri miPath = data.getData();
                 image.setImageURI(miPath);
 
                 try {
@@ -253,7 +256,7 @@ public class ActualizarProducto extends Fragment {
             progreso.setMessage("Cargando...");
             progreso.show();
 
-        String url = "http://192.168.0.3:8080/MicroNeg/update_productos.php?";
+        String url = "http://"+ip.IPPERRA+":80/webServiceMartin/update_productos.php?";
 
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -299,8 +302,8 @@ public class ActualizarProducto extends Fragment {
                 return parametros;
             }
         };
-        //queue.add(stringRequest);
-        VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(stringRequest);
+        requestQueue.add(stringRequest);
+        //VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(stringRequest);
     }
     //Metodo para eliminar un producto de la lista
     private void webServiceEliminar() {
@@ -308,7 +311,7 @@ public class ActualizarProducto extends Fragment {
         progreso.setMessage("Cargando...");
         progreso.show();
 
-        String url="http://192.168.0.3:8080/MicroNeg/delete_productos.php?id="+ID.getText().toString();
+        String url="http://"+ip.IPPERRA+":80/webServiceMartin/delete_productos.php?id="+ID.getText().toString();
 
         stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -340,16 +343,20 @@ public class ActualizarProducto extends Fragment {
                 progreso.hide();
             }
         });
-        queue.add(stringRequest);
+        //requestQueue.add(stringRequest);
         VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(stringRequest);
     }
+
+
+
+
     //Metodo para consultar el producto buscado
     private void cargarWebService() {
         progreso=new ProgressDialog(getContext());
         progreso.setMessage("Cargando...");
         progreso.show();
 
-        String url="http://192.168.0.3:8080/MicroNeg/ConsultarproductosUrl.php?id="+ID.getText().toString();
+        String url="http://"+ip.IPPERRA+":80/webServiceMartin/ConsultarproductosUrl.php?id="+ID.getText().toString();
 
         jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -375,7 +382,7 @@ public class ActualizarProducto extends Fragment {
                 precio.setText(miProducto.getPrecio());//SE MODIFICA
                 descripcion.setText(miProducto.getDescripcion());//SE MODIFICA
 
-                String urlImagen="http://192.168.0.3:8080/MicroNeg/"+miProducto.getRutaImagen();
+                String urlImagen="http://"+ip.IPPERRA+":80/webServiceMartin/"+miProducto.getRutaImagen();
                 //Toast.makeText(getContext(), "url "+urlImagen, Toast.LENGTH_LONG).show();
                 cargarWebServiceImagen(urlImagen);
             }
@@ -389,8 +396,8 @@ public class ActualizarProducto extends Fragment {
             }
         });
 
-        // request.add(jsonObjectRequest);
-        VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(jsonObjectRequest);
+         //requestQueue.add(jsonObjectRequest);
+           VolleySingleton.getIntanciaVolley(getContext()).addToRequestQueue(jsonObjectRequest);
     }
     private String convertirImagen(Bitmap bitmap) {
 

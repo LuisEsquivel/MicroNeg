@@ -2,27 +2,20 @@ package com.example.luisesquivel.martin;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 /**
@@ -36,6 +29,8 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
     RequestQueue requestQueue;
     ImageRequest imageRequest;
     Volley volley;
+
+    Ip ip = new Ip();
 
     public ProductosAdapter(ArrayList<Productos> listaProductos, Context context) {
         this.listaProductos = listaProductos;
@@ -54,6 +49,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
 
     @Override
     public void onBindViewHolder(ProductosAdapter.ViewHolder holder, int position) {
+        holder.id.setText(listaProductos.get(position).getId().toString());
         holder.name.setText(listaProductos.get(position).getNombre().toString());
         holder.price.setText("$USD "+listaProductos.get(position).getPrecio().toString());
         holder.descripcion.setText(listaProductos.get(position).getDescripcion().toString());
@@ -68,7 +64,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
     }
 
     private void cargarImagenPERRA(String rutaImagen, final ViewHolder holder) {
-        String urlImagenPerra = "http://192.168.0.9:8080/webServiceMartin/"+rutaImagen;
+        String urlImagenPerra = "http://"+ip.IPPERRA+":80/webServiceMartin/"+rutaImagen;
 
         imageRequest = new ImageRequest(urlImagenPerra, new Response.Listener<Bitmap>() {
             @Override
@@ -93,15 +89,17 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView  name, price, descripcion;
+        TextView  id, name, price, descripcion;
         ImageView img;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            id   = itemView.findViewById(R.id.idprod);
             name = itemView.findViewById(R.id.nombre_prod);
             price = itemView.findViewById(R.id.precio_prod);
             descripcion = itemView.findViewById(R.id.descripcion_prod);
             img   = itemView.findViewById(R.id.imagen_prod);
+
 
         }
 

@@ -11,7 +11,6 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
@@ -51,6 +50,7 @@ public class AgregarProducto extends Fragment {
     private String path;
     File fileImagen;
     Bitmap bitmap;
+    Ip ip = new Ip();
 
 
     //variables y el string request para enviar los parámetros por método POST
@@ -71,7 +71,7 @@ public class AgregarProducto extends Fragment {
         image = (ImageView) vista.findViewById(R.id.imagen_producto);
         nombre = (EditText) vista.findViewById(R.id.nombre_producto);
         precio = (EditText) vista.findViewById(R.id.precio_producto);
-        descripcion = (EditText)vista.findViewById(R.id.descripcion_prod);
+        descripcion = (EditText)vista.findViewById(R.id.direction);
         guardar = (Button) vista.findViewById(R.id.guardar);
         examinar = (Button) vista.findViewById(R.id.examinar);
 
@@ -197,7 +197,7 @@ public class AgregarProducto extends Fragment {
         progreso.show();
 
 
-        String url = "http://192.168.0.9:8080/webServiceMartin/productosPOST.php?";
+        String url = "http://"+ip.IPPERRA+":80/webServiceMartin/productosPOST.php?";
 
         stringRequest = new StringRequest(Method.POST, url, new Response.Listener<String>() {
             @Override

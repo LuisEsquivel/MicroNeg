@@ -2,6 +2,7 @@ package com.example.luisesquivel.martin;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -48,6 +49,8 @@ public class VerProductos extends Fragment implements Response.Listener<JSONObje
     JSONArray jsonArray;
     RequestQueue requestQueue;
 
+    Ip ip = new Ip();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,8 +90,7 @@ public class VerProductos extends Fragment implements Response.Listener<JSONObje
 
 
 
-        String url = "http://192.168.0.9:8080/webServiceMartin/verProductos.php";
-        url.replace(" ", "%20");
+        String url = "http://"+ip.IPPERRA+":80/webServiceMartin/verProductos.php";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this,this);
         requestQueue.add(jsonObjectRequest);
 
@@ -108,16 +110,21 @@ public class VerProductos extends Fragment implements Response.Listener<JSONObje
                     productos = new Productos();
                     jsonObject = jsonArray.getJSONObject(i);
 
+                    productos.setId(jsonObject.getInt("id"));
                     productos.setNombre(jsonObject.getString("nombre"));
                     productos.setPrecio(jsonObject.getString("precio"));
                     productos.setDescripcion(jsonObject.getString("descripcion"));
                     productos.setRutaImagen(jsonObject.optString("rutaImagen"));
 
                     listaProductos.add(productos);
+
                 }
                 progressDialog.dismiss();
                 ProductosAdapter adapter = new ProductosAdapter(listaProductos, getContext());
-                recyclerView.setAdapter(adapter);
+                 recyclerView.setAdapter(adapter);
+
+
+
             }catch (JSONException e) {
                 e.printStackTrace();
             }

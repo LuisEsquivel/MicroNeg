@@ -31,6 +31,14 @@
             android:paddingLeft="50dp">
 
             <TextView
+                android:id="@+id/idprod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="id"
+                android:textColor="@android:color/background_light" />
+
+            <TextView
                 android:id="@+id/nombre_prod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

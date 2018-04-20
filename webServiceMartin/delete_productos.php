@@ -2,7 +2,7 @@
 $hostname_localhost="localhost";
 $database_localhost="martin";
 $username_localhost="root";
-$password_localhost="admin13";
+$password_localhost="Batman";
 
 	if(isset($_GET["id"])){
 		$id=$_GET["id"];

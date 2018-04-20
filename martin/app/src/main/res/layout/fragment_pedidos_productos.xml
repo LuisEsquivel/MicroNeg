@@ -1,0 +1,150 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ed03181d"
+    tools:context="com.example.luisesquivel.martin.PedidosProductos">
+
+    <!-- TODO: Update blank fragment layout -->
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ed03181d"
+    >
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="100dp"
+        android:text="Pida algun producto"
+        android:textAlignment="center"
+        android:textColor="@color/colorPALETIN"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteY="766dp" />
+
+    <ImageButton
+        android:id="@+id/btnConsultarPedidos"
+        android:layout_width="39dp"
+        android:layout_height="28dp"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_alignTop="@+id/Productos"
+        android:layout_marginEnd="13dp"
+        android:layout_weight="3"
+        android:background="@color/colorPrimary"
+        android:ems="10"
+        android:src="@android:drawable/ic_menu_search" />
+
+    <TextView
+        android:id="@+id/IDProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1"
+        android:paddingLeft="120dp"
+        android:text="ID Producto:"
+        android:textColor="@android:color/background_light"
+        android:textSize="24dp" />
+
+    <EditText
+        android:id="@+id/Productos"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/IDProducto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:hint="ID"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
+        android:textColorHint="@android:color/background_light" />
+
+    <TextView
+        android:id="@+id/NombrePedidos"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_below="@+id/Productos"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="27dp"
+        android:text="nombre"
+        android:textColor="@android:color/background_light"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/PrecioPedidos"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_alignStart="@+id/NombrePedidos"
+        android:layout_below="@+id/NombrePedidos"
+        android:layout_marginTop="20dp"
+        android:text="precio"
+        android:textColor="@android:color/background_light"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/DescripcionPedidos"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_alignStart="@+id/PrecioPedidos"
+        android:layout_below="@+id/PrecioPedidos"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textColor="@android:color/background_light"
+        android:textColorHint="@android:color/background_light"
+        android:textSize="24dp"
+        tools:text="descripcion" />
+
+
+    <EditText
+        android:id="@+id/addressPerra"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/NombrePedidos"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="Ingresa tu dirección"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
+        android:textColorHint="@android:color/background_light" />
+
+    <EditText
+        android:id="@+id/phonazo"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/NombrePedidos"
+        android:layout_marginBottom="236dp"
+        android:ems="10"
+        android:hint="Ingresa tu teléfono"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
+        android:textColorHint="@android:color/background_light" />
+
+    <ImageView
+        android:id="@+id/imagen_producto"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/Pedir"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:src="@drawable/ic_menu_camera" />
+
+    <Button
+        android:id="@+id/Pedir"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_alignEnd="@+id/IDProducto"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/boton_chido"
+        android:text="Pedir"
+        android:textColor="@color/colorPALETIN" />
+
+</RelativeLayout>
+
+</FrameLayout>

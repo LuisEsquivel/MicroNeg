@@ -2,7 +2,7 @@
 $hostname_localhost="localhost";
 $database_localhost="martin";
 $username_localhost="root";
-$password_localhost="admin13";
+$password_localhost="Batman";
 
 $conexion=mysqli_connect($hostname_localhost,$username_localhost,$password_localhost,$database_localhost);
 

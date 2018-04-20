@@ -1,16 +1,34 @@
+
+
 <?php
-//Recibiendo usuario y pas 
-$usu=$_REQUEST['usu'];
-$pas=$_REQUEST['pas'];
 
 
-$cnx=new PDO("mysql:host=localhost;dbname=microneg","root","qwertyas1234");
-$res=$cnx->query("select * from cliente where nom_user='$usu' and pass='$pas'");
+$server = "localhost";
+$user   = "root";
+$password = "Batman";
+$database = "martin";
 
-$datos=array();
 
-foreach ($res as $row) {
-    $datos[]=$row;
+$conexion = mysqli_connect($server, $user, $password, $database);
+
+
+
+$usuario = $_POST["usuario"];
+$contraseña = $_POST["contraseña"];
+
+
+
+$consulta = "SELECT * FROM usuarios WHERE usuario='$usuario' AND contraseña='$contraseña'";
+
+
+$resultado = mysqli_query($conexion, $consulta);
+
+if(isset($resultado)){   
+         echo "Bienvenido";
+}else{
+    echo "error";
 }
-echo json_encode($datos);
+
+mysqli_close($conexion);
+
 ?>
